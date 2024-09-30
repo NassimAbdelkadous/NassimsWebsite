@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="C:\Users\proje\Desktop\website2024\style.css">
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('about'); return false;">About Me</a></li>
+                <li><a href="#" onclick="showSection('projects'); return false;">Projects</a></li>
+                <li><a href="#" onclick="showSection('certificates'); return false;">Certificates</a></li>
+                <li><a href="#" onclick="showSection('contact'); return false;">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="about" class="content">
+        <h2>About Me</h2>
+        <p>Welcome to my portfolio! I am a passionate IT security enthusiast with a strong interest in technology and problem-solving.</p>
+    </section>
+
+    <section id="projects" class="content" style="display: none;">
+        <h2>Projects</h2>
+        <p>Here are some of my projects:</p>
+        <ul>
+            <li>Project 1: Description of project 1</li>
+            <li>Project 2: Description of project 2</li>
+            <li>Project 3: Description of project 3</li>
+        </ul>
+    </section>
+
+    <section id="certificates" class="content" style="display: none;">
+        <h2>Certificates</h2>
+        <p>These are some of the certificates I've earned:</p>
+        <ul>
+            <li>Certificate 1</li>
+            <li>Certificate 2</li>
+            <li>Certificate 3</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="content" style="display: none;">
+        <h2>Contact</h2>
+        <p>You can reach me at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Name</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Only push state if it's a new section
+            if (!window.location.hash || window.location.hash !== `#${sectionId}`) {
+                history.pushState({ section: sectionId }, '', `#${sectionId}`);
+            }
+        }
+
+        // Handle back/forward navigation
+        window.onpopstate = function(event) {
+            if (event.state) {
+                // Show the section that is stored in the state
+                showSection(event.state.section);
+            } else {
+                // If there's no state, show the default section (About Me)
+                showSection('about');
+            }
+        };
+
+        // Show the default section on page load
+        window.onload = function() {
+            showSection('about');
+        };
+    </script>
+</body>
+</html>
