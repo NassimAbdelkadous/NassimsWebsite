@@ -1,2 +1,3 @@
 # NassimsWebsite
 This is my Portfolio, as a Website. I hope... 
+just ignore this project, iam just trying to learn how to make a website.
