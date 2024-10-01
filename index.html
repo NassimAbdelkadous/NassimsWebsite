@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Nassim Abdelkadous - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
+        <h1>Nassim Abdelkadous</h1>
         <nav>
             <ul>
                 <li><a href="#" onclick="showSection('about'); return false;">About Me</a></li>
@@ -19,9 +19,32 @@
         </nav>
     </header>
     
+    <!-- Updated "About Me" section with 4 pictures in a square layout -->
     <section id="about" class="content">
         <h2>About Me</h2>
-        <p>Welcome to my portfolio! I am a passionate IT security enthusiast with a strong interest in technology and problem-solving.</p>
+        
+        <div class="about-container">
+            <div class="about-text">
+               <!-- <p>Welcome to my portfolio! I am an IT trainee specializing in system integration.</p>
+               <p>This is a brief introduction about me. I am passionate about IT security, system integration, and much more!</p>-->
+                <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
+                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas 
+                    sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+                    voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                     consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+                      dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
+                       ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
+                       eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+                        qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+            </div>
+            <div class="about-images">
+                <img src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 1">
+                <img src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 2">
+                <img src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 3">
+                <img src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 4">
+            </div>
+        </div>
     </section>
 
     <section id="projects" class="content" style="display: none;">
@@ -39,14 +62,17 @@
         <p>These are some of the certificates I've earned:</p>
         <ul>
             <li>Certificate 1</li>
+            <img class="about-images-SecCertis" src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 5">
             <li>Certificate 2</li>
+            <img class="about-images-SecCertis" src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 6">
             <li>Certificate 3</li>
+            <img class="about-images-SecCertis" src="C:\Users\proje\Desktop\website2024\temp-pic1.png" alt="Image 7">
         </ul>
     </section>
 
     <section id="contact" class="content" style="display: none;">
         <h2>Contact</h2>
-        <p>You can reach me at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>You can reach me at <a href="mailto:My.email@example.com">My.email@example.com</a></p>
     </section>
 
     <footer>
@@ -55,33 +81,26 @@
 
     <script>
         function showSection(sectionId) {
-            // Hide all sections
             const sections = document.querySelectorAll('.content');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
 
-            // Show the selected section
             document.getElementById(sectionId).style.display = 'block';
 
-            // Only push state if it's a new section
             if (!window.location.hash || window.location.hash !== `#${sectionId}`) {
                 history.pushState({ section: sectionId }, '', `#${sectionId}`);
             }
         }
 
-        // Handle back/forward navigation
         window.onpopstate = function(event) {
             if (event.state) {
-                // Show the section that is stored in the state
                 showSection(event.state.section);
             } else {
-                // If there's no state, show the default section (About Me)
                 showSection('about');
             }
         };
 
-        // Show the default section on page load
         window.onload = function() {
             showSection('about');
         };
